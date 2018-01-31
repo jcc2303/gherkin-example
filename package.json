@@ -1,0 +1,15 @@
+{
+  "name": "gherkin-example",
+  "version": "1.0.0",
+  "description": "gherkin demo testing amazon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gherkin",
+    "test"
+  ],
+  "author": "Javier Cabrera <cabrera.javier@gmail.com> (http://tecla5.com)",
+  "license": "ISC"
+}
