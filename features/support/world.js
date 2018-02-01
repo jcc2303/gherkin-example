@@ -6,7 +6,6 @@ const {Builder, By, until} = require('selenium-webdriver');
 
 class CustomWorld {
   constructor() {
-    debugger
     this.variable = 0
     this.By = By
     this.until = until
@@ -15,13 +14,6 @@ class CustomWorld {
         .build()
   }
 
-  setTo(number) {
-    this.variable = number
-  }
-
-  incrementBy(number) {
-    this.variable += number
-  }
 }
 
 setWorldConstructor(CustomWorld)

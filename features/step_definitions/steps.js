@@ -3,32 +3,29 @@ const { AfterAll, BeforeAll, Given, When, Then } = require('cucumber')
 const { expect } = require('chai')
 // var assert = require('assert');
 
-let {driver, By} = this
-let {} = require('../support/world')
+let OfferPage = require('../pages/offer-page.js');
+let offerPage = new OfferPage()
+// offerpage.browser = this.driver
 
-Given(/^I visit the page and go to the offer section$/, function(callback) {
-  let {driver, By, until} = this
-  //driver.get('http://www.amazon.es/')
-  //.then(_ => driver.findElement(By.xpath('//div[@id="nav-xshop"]/a[@class="nav-a"]')).click())
-  driver.get('https://www.amazon.es/gp/goldbox/')  
-  .then(_ => callback())
+// Given with PageObject pattern
+Given(/^I visit amazon in the offer section$/, function(callback) {
+  offerPage.go(this) // I pass the context here, maybe cucumber have another to config this
+  .then(callback)
 });
 
-// Given('a variable set to {int}', function(number) {
-When(/^I add an item to the list$/, function() {
+// We could follow applying the same PO pattern
+// it could use {string} to pass data from feature file
+When(/^I add the first item to the list$/, function(callback) {   // return promise or callback
   let {driver, By, until} = this
-  // <a href="/gp/goldbox/ref=nav_cs_gb" class="nav-a" tabindex="17">Ofertas</a>
-  // return 
-  return driver
-  //.then(_ => driver.wait(until.titleIs('Las ofertas por tiempo limitado de Amazon.es.'), 1000))
-  .then(_ => driver.wait(until.titleIs('Las ofertas por tiempo limitado de Amazon.es.'), 4000)) // ofertas amazon
-  .then(_ => driver.findElement(By.xpath('//div[@id="100_dealView_0"]//span[@data-action="gbdeal-addtocart"]//button')).click()) // add
-  //.then(_ => callback())
+  //return 
+  driver 
+  .then(_ => driver.wait(until.titleIs(offerPage.tittle), 4000)) // ofertas amazon
+  .then(_ => driver.findElement(By.xpath('//div//span[@data-action="gbdeal-addtocart"]//button')).click()) // add specfic [@id="100_dealView_0"]
+  .then(callback)
 });
 
 Then(/^The Amazon list contains a single item$/, function() {
   let {driver, By, until} = this
-  //let data = 
   driver
   .then(_ => driver.wait(until.titleIs('Cesta de compra Amazon.es'), 1000)) //cesta page
   .then(_ => driver.findElement(By.xpath('//span[@id="nav-cart-count"]')).getText() )

@@ -1,18 +1,19 @@
+# gherkin example
+an example of cucumber/gherkin with selenium webdriver using chrome
+
+## the stack:
+- cucumber v4
+- selenium-webdriver v4
+- chromedriver
+- chai
 
 
-## driver browser - forBrowser('chrome')
-chromedriver
+## Install
+```sh
+npm install
+```
 
-## to automate actions
-selenium-webdriver
-
-
-# run test
-npm test 
-    cucumber-js
-
-
-
-
-### --- todo
-export {no_proxy,NO_PROXY}="127.0.0.1"
+## Test
+```sh
+npm test # -> cucumber-js
+```

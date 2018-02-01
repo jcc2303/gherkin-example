@@ -4,7 +4,7 @@ Feature: User start process on Amazon List
   So that I can start process to buy that item at the Amazon store
 
   Scenario: Item added to Amazon list
-    Given I visit the page and go to the offer section
-    When I add an item to the list
+    Given I visit amazon in the offer section
+    When I add the first item to the list
     Then The Amazon list contains a single item
     Then I should able to start process to buy the Amazon list  
